@@ -27,26 +27,28 @@ function printHelp() {
 
   //this is async function responsible for getting weather data asynchronously
   async function getWeatherData(latitude, longitude, timezone, day) {
+
+    //defect fix
+
+    latitude = Math.round(latitude * 100) / 100;
+    longitude = Math.round(longitude * 100) / 100;
+
     // create API URL using the parameters
     const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum,precipitation_hours,windspeed_10m_max,windgusts_10m_max,winddirection_10m_dominant&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=${timezone}`
   
     // verify the input parameters
-    if ((!latitude || !longitude) && !args.j) {
-        console.error('Error: Latitude and longitude must be provided.');
-        printHelp();
-      }
+    //if ((!latitude || !longitude) && !args.j) {
+    //    console.error('Error: Latitude and longitude must be provided.');
+    //    printHelp();
+    //}
 
     try {
       // use fetch function to get data from the url
       const response = await fetch(apiUrl);
       const data = await response.json();
       if (args.j) {
-        //data.latitude = Math.round(data.latitude * 100) / 100;
-        //data.longitude = Math.round(data.longitude * 100) / 100;
-
-        data.latitude = parseFloat(data.latitude);
-        data.longitude = parseFloat(data.longitude);
-        
+        data.latitude = Math.round(data.latitude * 100) / 100;
+        data.longitude = Math.round(data.longitude * 100) / 100;
         console.log(data);
         process.exit(0);
       }
