@@ -1,0 +1,28 @@
+{
+  "name": "a02-functions-ishaatre",
+  "version": "1.0.0",
+  "description": "create a command line Node.js package that ingests API data from Open-Meteo",
+  "main": "cli.js",
+  "type": "module",
+  "scripts": {
+    "test": "node cli.js -n 35.92 -w 79.05 -z America/New_York"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comp426-2023-spring/a02-functions-Ishaatre.git"
+  },
+  "author": "Ishaatre",
+  "license": "GPL-3.0-or-later",
+  "bin": {
+    "galosh.js": "./cli.js"
+  },
+  "bugs": {
+    "url": "https://github.com/comp426-2023-spring/a02-functions-Ishaatre/issues"
+  },
+  "homepage": "https://github.com/comp426-2023-spring/a02-functions-Ishaatre#readme",
+  "dependencies": {
+    "minimist": "^1.2.8",
+    "moment-timezone": "^0.5.43",
+    "node-fetch": "^3.3.1"
+  }
+}
