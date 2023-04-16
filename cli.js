@@ -41,7 +41,13 @@ function printHelp() {
       const response = await fetch(apiUrl);
       const data = await response.json();
       if (args.j) {
-        console.log(JSON.stringify(data, null, 2));
+        //data.latitude = Math.round(data.latitude * 100) / 100;
+        //data.longitude = Math.round(data.longitude * 100) / 100;
+
+        data.latitude = parseFloat(data.latitude);
+        data.longitude = parseFloat(data.longitude);
+        
+        console.log(data);
         process.exit(0);
       }
   
